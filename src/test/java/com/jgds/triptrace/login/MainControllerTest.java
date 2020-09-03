@@ -1,4 +1,4 @@
-package com.jgds.triptrace.web;
+package com.jgds.triptrace.login;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

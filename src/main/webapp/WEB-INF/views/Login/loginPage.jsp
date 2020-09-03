@@ -4,10 +4,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>로그인페이지</title>
+
+    <link href="/resources/css/kakao_login.css" rel="stylesheet" type="text/css">
+
     <!--
-    <link href="/resources/static/css/kakao_login.css" rel="stylesheet" type="text/css">
+        <link href="/static/css/kakao_login.css" rel="stylesheet" type="text/css">
     -->
-    <link href="/static/css/kakao_login.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <script>
@@ -76,7 +78,9 @@
     <button type="submit">submit</button>
 </form:form>
 
-
+<!--
 <script src="/static/js/kakao_login.js"></script>
+-->
+<script src="/resources/js/kakao_login.js"></script>
 </body>
 </html>
