@@ -38,7 +38,10 @@ public class LoginController {
         System.out.println(email + " " + pw);
 
         List<UserVO> list = userService.selectUserList();
-        System.out.println(list.toString());
+        for (UserVO userVO : list) {
+            System.out.println(userVO.toString());
+        }
+
 
         return "이게응답이네요";
     }
