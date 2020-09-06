@@ -75,7 +75,6 @@
                     "loginPw" : $("#password").val()
         },
                 success: function(data){
-                   alert(data);
                     window.location.href = "/loginSuccess.do";
                 },
                 error: function(){

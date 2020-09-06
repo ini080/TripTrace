@@ -27,12 +27,12 @@ public class LoginController {
 
     @RequestMapping(value = "/")
     public String home(Model model){
-        return "/Login/loginPage";
+        return "loginPage";
     }
 
-    @RequestMapping(value= "/loginPage.do")
-    public String loginPage(Model model){
-        return "/Login/loginPage";
+    @RequestMapping(value= "/test.do")
+    public String test(Model model){
+        return "main";
     }
 
     @ResponseBody
@@ -49,10 +49,5 @@ public class LoginController {
 
         if( list != null ) return "success";
         return "fail";
-    }
-
-    @RequestMapping(value= "/loginSuccess.do")
-    public String loginSuccess(Model model){
-        return "/Main/mainPage";
     }
 }
