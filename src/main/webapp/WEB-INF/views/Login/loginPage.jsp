@@ -7,29 +7,68 @@
 
     <link href="/resources/css/kakao_login.css" rel="stylesheet" type="text/css">
 
-    <!--
-        <link href="/static/css/kakao_login.css" rel="stylesheet" type="text/css">
-    -->
+    <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            // @details 카카오톡 Developer API 사이트에서 발급받은 JavaScript Key
+            Kakao.init( "72ba639c5056b7dc53790d92c0760d10" );
+            // @breif 카카오 로그인 버튼을 생성합니다.
+
+            Kakao.Auth.createLoginButton({
+
+                container: '#kakao-login-btn',
+
+                success: function(authObj) {
+
+                    Kakao.API.request({
+                        url: '/v2/user/me',
+                        success: function(res) {
+
+                            console.log(res);
+                            console.log(res.properties)
+                            console.log(res.kakao_account)
+                            console.log(res.kakao_account.profile.nickname)
+                            console.log(res.kakao_account.thumbnail_image_url)
+
+                            document.getElementById( "kakaoNickName" ).innerHTML = res.kakao_account.profile.nickname;
+                            document.getElementById( "kakaoProfileImg" ).src = res.kakao_account.profile.profile_image_url
+                            document.getElementById( "kakaoThumbnailImg" ).src = res.kakao_account.profile.thumbnail_image_url
+
+                            var id	= res.id;
+                            var name	= res.properties.nickname != undefined ? res.properties.nickname : '이름없음';
+                            var email	= res.kaccount_email;
+
+                            if(id !='' && name != '')
+                            {
+// 	     		  join(id , name, email, 'K');
+                            }
+                            else
+                            {
+                                alert('카카오톡의 정보가 충분하지 않습니다.');
+                            }
+
+                        }
+                    })
+                },
+                fail: function(err) {
+                    alert(JSON.stringify(err));
+                }
+            });
+        });
+    </script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    <script>
-        // $(function() {
-        //id가 inputTag 인 태그를 클릭하면 동작해요!
-        // 	$("#inputTag").click(function() {
-        // 		alert('아직은 준비가...');
-        // 	});
-        // })
-    </script>
+
 
     <script type="text/javascript">
         function fn_login(){
             var inputId = $("#email").val();
             var inputPw = $("#password").val();
 
-            alert("로그인 : " + inputId + " , " + inputPw);
 
             $.ajax({
-                url: "login",
+                url: "/login.do",
                 type: "POST",
                 data: {
                     "loginEmail" : $("#email").val(),
@@ -37,6 +76,7 @@
         },
                 success: function(data){
                    alert(data);
+                    window.location.href = "/loginSuccess.do";
                 },
                 error: function(){
                     alert("serialize err");
@@ -77,10 +117,12 @@
     <input type="button" value="로그인" onclick="fn_login()">
     <button type="submit">submit</button>
 </form:form>
+<a id="kakao-login-btn"></a>
+<div>이름 : <span id="kakaoNickName"></span></div>
 
-<!--
-<script src="/static/js/kakao_login.js"></script>
--->
+<div>프로필 이미지 : <img id="kakaoProfileImg" src=""/></div>
+
+<div>썸네일 이미지 : <img id="kakaoThumbnailImg" src=""/></div>
 <script src="/resources/js/kakao_login.js"></script>
 </body>
 </html>

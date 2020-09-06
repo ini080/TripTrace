@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -24,25 +25,34 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value= "/loginPage")
+    @RequestMapping(value = "/")
+    public String home(Model model){
+        return "/Login/loginPage";
+    }
+
+    @RequestMapping(value= "/loginPage.do")
     public String loginPage(Model model){
         return "/Login/loginPage";
     }
 
     @ResponseBody
-    @RequestMapping(value= "/login", method = RequestMethod.POST)
-    public String loginTry(HttpServletRequest request, HttpSession session ) throws  Exception{
+    @RequestMapping(value= "/login.do", method = RequestMethod.POST)
+    public String loginTry(HttpServletRequest request) throws  Exception{
         System.out.println("에이작스호출");
         String email = request.getParameter("loginEmail");
         String pw = request.getParameter("loginPw");
         System.out.println(email + " " + pw);
-
         List<UserVO> list = userService.selectUserList();
         for (UserVO userVO : list) {
             System.out.println(userVO.toString());
         }
 
+        if( list != null ) return "success";
+        return "fail";
+    }
 
-        return "이게응답이네요";
+    @RequestMapping(value= "/loginSuccess.do")
+    public String loginSuccess(Model model){
+        return "/Main/mainPage";
     }
 }
