@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jgds.triptrace.main.dao.BoardDAO"><!--namespace를 통해 UserDAO와 연결합니다. -->
+
+    <insert id="insertBoard" parameterType="com.jgds.triptrace.main.vo.BoardVO">
+        INSERT INTO FILE_GROUP
+        (
+              GROUP_NAME
+            , PATH
+            , SHOW_DATE
+            , SHOW_TITLE
+            , SHOW_CONTENT
+            , SHOW_PLACE
+            , DEL_YN
+            , REG_ID
+            , REG_DATE
+        )
+        VALUES
+        (
+              #{groupName}
+            , #{path}
+            , #{showDate}
+            , #{showTitle}
+            , #{showContent}
+            , #{showPlace}
+            , #{delYn}
+            , #{regId}
+            , #{regDate}
+        )
+    </insert>
+</mapper>

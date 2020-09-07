@@ -27,7 +27,7 @@ public class LoginController {
 
     @RequestMapping(value = "/")
     public String home(Model model){
-        return "loginPage";
+        return "/Login/loginPage";
     }
 
     @RequestMapping(value= "/test.do")

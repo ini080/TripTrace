@@ -1,42 +1,20 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+
+<%@ include file="/WEB-INF/views/template/header.jsp" %>
 
 
 <div id="colorlib-page">
-	<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-	<aside id="colorlib-aside" role="complementary" class="js-fullheight">
+	<%@ include file="/WEB-INF/views/template/aside.jsp" %>
 
-		<h1 id="colorlib-logo" class="mb-4 mb-md-5"><a href="index.html" style="background-image: url(/resources/main/images/bg_1.jpg);">Mostudio</a></h1>
-		<nav id="colorlib-main-menu" role="navigation">
-			<ul>
-				<li class="colorlib-active"><a href="/Main/home.do">Home</a></li>
-				<li><a href="/Main/Gallery.do">Gallery</a></li>
-				<li><a href="/Main/About.do">About</a></li>
-				<li><a href="/Main/Pricing.do">Pricing</a></li>
-				<li><a href="/Main/Contatct.do">Contact</a></li>
-			</ul>
-		</nav>
 
-		<div class="colorlib-footer">
-			<div class="mb-4">
-				<h3>Subscribe for newsletter</h3>
-				<form action="#" class="colorlib-subscribe-form">
-					<div class="form-group d-flex">
-						<div class="icon"><span class="icon-paper-plane"></span></div>
-						<input type="text" class="form-control" placeholder="Enter Email Address">
-					</div>
-				</form>
-			</div>
-			<p class="pfooter"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-		</div>
-	</aside> <!-- END COLORLIB-ASIDE -->
 	<div id="colorlib-main">
 		<section class="ftco-section ftco-no-pt ftco-no-pb">
 			<div class="container px-md-0">
 				<div class="row d-flex no-gutters">
 					<div class="col-md-12 portfolio-wrap">
 						<div class="row no-gutters align-items-center">
-							<a href="images/work-1.jpg" class="col-md-6 img image-popup js-fullheight d-flex align-items-center justify-content-center" style="background-image: url(/resources/main/images/work-1.jpg);">
+							<a href="images/work-1.jpg" class="col-md-6 img image-popup js-halfheight d-flex align-items-center justify-content-center" style="background-image: url(/resources/images/2020-05-05/1.jpg);">
 								<div class="icon d-flex align-items-center justify-content-center">
 									<span class="fa fa-expand"></span>
 								</div>
@@ -46,13 +24,13 @@
 									<div class="px-4 px-lg-4">
 										<div class="desc">
 											<div class="top">
-												<span class="subheading">Portrait</span>
-												<h2 class="mb-4"><a href="gallery.html">Black &amp; Gold Paint Face</a></h2>
+												<span class="subheading">2020-05-05</span>
+												<h2 class="mb-4"><a href="gallery.html">전주 한옥마을</a></h2>
 											</div>
 											<div class="absolute">
-												<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
+												<p>전주 한옥마을 꾸르꾸르 꾸울재앰~</p>
 											</div>
-											<p><a href="single.html" class="custom-btn">View Portfolio</a></p>
+											<p><a href="single.html" class="custom-btn">사진 더보기</a></p>
 										</div>
 									</div>
 								</div>
@@ -280,5 +258,4 @@
 
 
 
-<tiles:insertAttribute name="footer" />
-
+<%@ include file="/WEB-INF/views/template/footer.jsp" %>

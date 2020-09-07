@@ -1,6 +1,6 @@
 package com.jgds.triptrace.login;
 
-import com.jgds.triptrace.main.MainController;
+import com.jgds.triptrace.main.controller.MainController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

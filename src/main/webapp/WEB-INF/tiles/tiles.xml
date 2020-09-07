@@ -8,23 +8,13 @@
         <put-attribute name="body" value="" />
     </definition>
 
-    <definition name="error/*" extends="default">
+    <definition name="error/12312312" extends="default">
         <put-attribute name="body" value="/WEB-INF/views/error/{1}.jsp" />
     </definition>
 
-    <definition name="loginPage" extends="default">
+    <definition name="log12312123inPa3123123ge" extends="default">
         <put-attribute name="body" value="/WEB-INF/views/Login/loginPage.jsp" />
     </definition>
 
-    <!-- Header / Footer가 들어간 기본 화면 -->
-    <definition name="main" template="/WEB-INF/tiles/layout/main.jsp">
-        <put-attribute name="header" value="/WEB-INF/tiles/layout/header.jsp" />
-        <put-attribute name="body" value="" />
-        <put-attribute name="footer" value="/WEB-INF/tiles/layout/footer.jsp" />
-    </definition>
-
-    <definition name="/Main/*" extends="main">
-        <put-attribute name="body" value="/WEB-INF/views/Main/{1}.jsp" />
-    </definition>
 
 </tiles-definitions>

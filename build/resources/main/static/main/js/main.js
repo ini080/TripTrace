@@ -22,6 +22,14 @@
 	};
 	fullHeight();
 
+	var halfHeight = function(){
+		$('.js-halfheight').css('height', "550px");
+		$(window).resize(function(){
+			$('.js-halfheight').css('height', "550px");
+		});
+	}
+	halfHeight();
+
 	// loader
 	var loader = function() {
 		setTimeout(function() { 
