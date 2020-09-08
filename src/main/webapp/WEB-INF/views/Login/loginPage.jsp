@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +8,7 @@
     <title>로그인페이지</title>
 
     <link href="/resources/css/kakao_login.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script type="text/javascript">
@@ -57,8 +60,7 @@
         });
     </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 
 
     <script type="text/javascript">
@@ -116,12 +118,15 @@
     <input type="button" value="로그인" onclick="fn_login()">
     <button type="submit">submit</button>
 </form:form>
+<!--
 <a id="kakao-login-btn"></a>
 <div>이름 : <span id="kakaoNickName"></span></div>
 
 <div>프로필 이미지 : <img id="kakaoProfileImg" src=""/></div>
 
 <div>썸네일 이미지 : <img id="kakaoThumbnailImg" src=""/></div>
+-->
 <script src="/resources/js/kakao_login.js"></script>
+
 </body>
 </html>

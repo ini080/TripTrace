@@ -13,7 +13,9 @@ public class FileUtil {
 
     private static final Logger log = LoggerFactory.getLogger(FileUtil.class);
 
-    private static final String base_directory = "C:\\Temp\\";
+    //private static final String base_directory = "C:\\Java\\UploadImage\\";
+
+    private static final String base_directory = "C:\\Java\\Intelij\\src\\main\\resources\\static\\images\\";
 
     public static List<HashMap<String,String>> uploadFile(MultipartHttpServletRequest request) throws IOException {
 
@@ -93,5 +95,9 @@ public class FileUtil {
     public static String createPath(String place,String date){
 
         return base_directory + place + "_" + date;
+    }
+
+    public static String getBase_directory(){
+        return base_directory;
     }
 }

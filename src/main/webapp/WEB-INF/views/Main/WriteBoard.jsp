@@ -21,7 +21,7 @@
 	<%@ include file="/WEB-INF/views/template/aside.jsp" %>
 
 		<div id="colorlib-main">
-			<form action="/Main/uploadFile.do" method="post" enctype="multipart/form-data" name="files" id="files">
+			<form action="/Main/uploadFile.do" method="post" enctype="multipart/form-data" name="files" id="files" accept-charset="UTF-8">
 			<section class="ftco-section ftco-no-pt ftco-no-pb">
 				<div class="container px-md-0">
 					<div class="row d-flex no-gutters">
@@ -32,26 +32,33 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="label" for="title">제목</label>
-												<input type="text" class="form-control" name="title" id="title" placeholder="제목">
+												<label class="label" for="showTitle">제목</label>
+												<input type="text" class="form-control" name="showTitle" id="showTitle" placeholder="제목">
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="label" for="date">날짜</label>
-												<input type="date" class="form-control" name="date" id="date" placeholder="2020-05-05">
+												<label class="label" for="showDate">날짜</label>
+												<input type="date" class="form-control" name="showDate" id="showDate">
 											</div>
 										</div>
 										<div class="col-md-12">
 											<div class="form-group">
-												<label class="label" for="place">장소</label>
-												<input type="text" class="form-control" name="place" id="place" placeholder="사진찍은 장소">
+												<label class="label" for="showPlace">장소</label>
+												<input type="text" class="form-control" name="showPlace" id="showPlace" placeholder="사진찍은 장소">
 											</div>
 										</div>
 										<div class="col-md-12">
 											<div class="form-group">
-												<label class="label" for="message">소개</label>
-												<textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+												<label class="label" for="showContent">소개</label>
+												<textarea name="showContent" class="form-control" id="showContent" cols="20" rows="4" ></textarea>
+											</div>
+										</div>
+
+										<div class="col-md-12">
+											<div class="form-group">
+												<label class="label" for="thumbNail">썸네일</label>
+												<input type="file" name="thumbNail" id="thumbNail"/>
 											</div>
 										</div>
 

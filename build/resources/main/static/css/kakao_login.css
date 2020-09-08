@@ -99,3 +99,64 @@ input {
 .look-away.playing.down .muzzle {
     animation-name: lookaway-down;
 }
+
+
+
+@media (min-width: 576px) {
+    form {
+        width: 80%;
+        height: 80%;
+        padding: 60px 25px 80px;
+        margin: 50px auto;
+        background: #f8d348;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body {
+        background: #3d516b;
+    }
+
+    svg {
+        width: 80%;
+        border-radius: 50%;
+        background: #fff;
+        margin-bottom: 40px;
+        align-self: center;
+        transform-style: preserve-3d;
+    }
+
+    input {
+        font-size: 35px;
+        border: 0;
+        border-radius: 5px;
+        outline: 0;
+        padding: 10px 15px;
+        margin-top: 15px;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .float-md-left {
+        float: left !important; }
+    .float-md-right {
+        float: right !important; }
+    .float-md-none {
+        float: none !important; } }
+
+@media (min-width: 992px) {
+    .float-lg-left {
+        float: left !important; }
+    .float-lg-right {
+        float: right !important; }
+    .float-lg-none {
+        float: none !important; } }
+
+@media (min-width: 1200px) {
+    .float-xl-left {
+        float: left !important; }
+    .float-xl-right {
+        float: right !important; }
+    .float-xl-none {
+        float: none !important; } }
