@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jgds.triptrace.main.dao.BoardDAO"><!--namespace를 통해 UserDAO와 연결합니다. -->
+
+    <resultMap id="boardVOMap" type="com.jgds.triptrace.main.vo.BoardVO">
+        <result column="SEQ" property="seq" />
+        <result column="GROUP_NAME" property="groupName" />
+        <result column="PATH" property="path" />
+        <result column="SHOW_PICKTURE" property="showPickture" />
+        <result column="SHOW_DATE" property="showDate" />
+        <result column="SHOW_TITLE" property="showTitle" />
+        <result column="SHOW_PLACE" property="showPlace" />
+        <result column="SHOW_CONTENT" property="showContent" />
+        <result column="ORIGIN_FILE_NM" property="originFileNm" />
+        <result column="SAVE_FILE_NM" property="saveFileNm" />
+        <result column="DEL_YN" property="delYn" />
+        <result column="REG_ID" property="regId" />
+        <result column="REG_DATE" property="regDate" />
+        <result column="SEQ_ORDER" property="seqOrder" />
+    </resultMap>
+
+    <resultMap id="fileVOMap" type="com.jgds.triptrace.main.vo.FileVO">
+        <result column="FILE_GROUP_SEQ" property="fileGroupSeq" />
+        <result column="FILE_GROUP" property="fileGroup" />
+        <result column="FILE_SEQ" property="fileSeq" />
+        <result column="ORIGIN_NAME" property="originName" />
+        <result column="SAVE_NAME" property="saveName" />
+        <result column="PATH" property="path" />
+        <result column="FILE_EXTENSION" property="fileExtension" />
+        <result column="FILE_SIZE" property="fileSize" />
+        <result column="REG_ID" property="regId" />
+        <result column="REG_DATE" property="regDate" />
+        <result column="DEL_YN" property="delYn" />
+        <result column="SEQ_ORDER" property="seqOrder" />
+    </resultMap>
+
+
+    <select id="selectBoardList" parameterType="com.jgds.triptrace.main.vo.BoardVO" resultMap="boardVOMap">
+        SELECT * FROM BOARD
+    </select>
+
+    <select id="selectBoard" parameterType="com.jgds.triptrace.main.vo.BoardVO" resultType="com.jgds.triptrace.main.vo.BoardVO">
+        SELECT * FROM BOARD WHERE SEQ = #{seq}
+    </select>
+
+    <select id="selectThumbNailInfo" parameterType="com.jgds.triptrace.main.vo.BoardVO" resultMap="fileVOMap">
+        SELECT *
+        FROM ATTACH_FILE
+        WHERE ORIGIN_NAME = (SELECT SHOW_PICKTURE FROM BOARD WHERE SEQ = #{seq})
+    </select>
+
+    <insert id="insertBoard" parameterType="com.jgds.triptrace.main.vo.BoardVO">
+        INSERT INTO BOARD
+        (
+              GROUP_NAME
+            , PATH
+            , SHOW_PICKTURE
+            , SHOW_DATE
+            , SHOW_TITLE
+            , SHOW_CONTENT
+            , SHOW_PLACE
+            , ORIGIN_FILE_NM
+            , SAVE_FILE_NM
+            , DEL_YN
+            , REG_ID
+            , REG_DATE
+        )
+        VALUES
+        (
+              #{groupName}
+            , #{path}
+            , #{showPickture}
+            , #{showDate}
+            , #{showTitle}
+            , #{showContent}
+            , #{showPlace}
+            , #{originFileNm}
+            , #{saveFileNm}
+            , #{delYn}
+            , #{regId}
+            , #{regDate}
+        )
+    </insert>
+
+    <insert id="insertAttachFile" parameterType="com.jgds.triptrace.main.vo.FileVO">
+        INSERT INTO ATTACH_FILE
+        (
+              FILE_GROUP_SEQ
+            , FILE_GROUP
+            , ORIGIN_NAME
+            , SAVE_NAME
+            , PATH
+            , FILE_EXTENSION
+            , FILE_SIZE
+            , REG_ID
+            , REG_DATE
+            , DEL_YN
+            , SEQ_ORDER
+        )
+        VALUES
+        (
+              #{fileGroupSeq}
+            , #{fileGroup}
+            , #{originName}
+            , #{saveName}
+            , #{path}
+            , #{fileExtension}
+            , #{fileSize}
+            , #{regId}
+            , #{regDate}
+            , #{delYn}
+            , #{seqOrder}
+        )
+    </insert>
+</mapper>
