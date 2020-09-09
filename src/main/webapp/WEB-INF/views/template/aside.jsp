@@ -15,18 +15,32 @@
         </ul>
     </nav>
 
+
+
     <div class="colorlib-footer">
         <div class="mb-4">
-            <h3>Subscribe for newsletter</h3>
-            <form action="#" class="colorlib-subscribe-form">
-                <div class="form-group d-flex">
-                    <div class="icon"><span class="icon-paper-plane"></span></div>
-                    <input type="text" class="form-control" placeholder="Enter Email Address">
-                </div>
-            </form>
+            <!-- 리스트 이미지 토글 버튼 -->
+            <div class="toggleWrapper">
+                <input type="checkbox" class="dn" id="dn" onchange="fn_changeMode();"/>
+                <label for="dn" class="toggle">
+                    <span class="toggle__handler">
+                      <span class="crater crater--1"></span>
+                      <span class="crater crater--2"></span>
+                      <span class="crater crater--3"></span>
+                    </span>
+                    <span class="star star--1"></span>
+                    <span class="star star--2"></span>
+                    <span class="star star--3"></span>
+                    <span class="star star--4"></span>
+                    <span class="star star--5"></span>
+                    <span class="star star--6"></span>
+                </label>
+            </div>
+            <!-- 리스트 이미지 토글 버튼 -->
         </div>
-        <p class="pfooter"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | It is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank">JG Heo</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+        <p class="footer">
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </p>
+        <p>It is made with  <i class="fa fa-heart" aria-hidden="true"></i> </p>
+        <p>by <a href="#" target="_blank">JG Heo</a></p>
     </div>
 </aside> <!-- END COLORLIB-ASIDE -->

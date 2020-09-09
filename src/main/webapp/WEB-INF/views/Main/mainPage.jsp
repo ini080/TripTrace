@@ -3,14 +3,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-
 <%@ include file="/WEB-INF/views/template/header.jsp" %>
+
+<script>
+	function fn_changeMode(){
+		if( $("input:checkbox[id='dn']").is(":checked") ){
+			$("#colorlib-main").show();
+		}else{
+			$("#colorlib-main").hide();
+		}
+
+	}
+
+</script>
 
 <div id="colorlib-page">
 	<%@ include file="/WEB-INF/views/template/aside.jsp" %>
 
-
-	<div id="colorlib-main">
+	<div id="colorlib-main" style="display: none;">
 		<section class="ftco-section ftco-no-pt ftco-no-pb">
 			<div class="container px-md-0">
 				<div class="row d-flex no-gutters">
