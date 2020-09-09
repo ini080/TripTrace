@@ -6,7 +6,6 @@
 
 <%@ include file="/WEB-INF/views/template/header.jsp" %>
 
-
 <div id="colorlib-page">
 	<%@ include file="/WEB-INF/views/template/aside.jsp" %>
 
