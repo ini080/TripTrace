@@ -8,11 +8,16 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.List;
@@ -137,9 +142,8 @@ public class MainController {
             boardService.insertAttachFile(fileVO);
         }
 
-        model.addAttribute("msg","정상적으로 등록되었습니다.");
-        return "/Main/WriteBoard";
-
+        model.addAttribute("msgSuccess","정상적으로 등록되었습니다.");
+        return "Main/WriteBoard";
     }
     
     /**
@@ -163,9 +167,9 @@ public class MainController {
      /* @Param : file  - 저장할 파일, subDirectory - 저장할 파일 경로
      */
     private String saveFile(MultipartFile file,String subDirectory){
-        UUID uid = UUID.randomUUID();
-        String saveName =  uid + "_" + file.getOriginalFilename();
 
+        String saveName = FileUtil.createFileName(file.getOriginalFilename());
+        System.out.println("저장이름 : " + saveName);
         String savePath = FileUtil.getBase_directory() + subDirectory + "\\";
 
         File Folder = new File(savePath); //저장 폴더 경로
@@ -185,4 +189,44 @@ public class MainController {
 
         return saveName;
     }
+
+    @RequestMapping(value= "/Main/downFile.do")
+    public void downFile(HttpServletRequest request, HttpServletResponse response, Model model) throws  Exception{
+        String param = request.getParameter("img");
+        String downRootPath = FileUtil.getBase_directory();
+
+        String path = downRootPath + param;
+        File uFile = new File(path);
+        int fSize = (int) uFile.length();
+
+        if( fSize > 0 ){
+            System.out.println("존재");
+            BufferedInputStream bis = null;
+            ServletOutputStream sos = null;
+
+            try{
+                bis = new BufferedInputStream(new FileInputStream(uFile));
+                sos =  response.getOutputStream();
+
+                response.setContentType("application/octet-stream; charset=UTF-8");
+                response.setHeader("Content-Disposition","attachment; filename=\""+ URLEncoder.encode(param,"UTF-8") + "\"" );
+                response.setHeader("Content-Transfer-Encoding","binary");
+                response.setContentLength(fSize);
+
+                FileCopyUtils.copy(bis,sos);
+
+                sos.flush();
+            }catch (Exception e){
+                System.out.println("익셉션");
+                System.out.println(e.getStackTrace());
+            }
+            finally {
+                if(bis!=null) bis.close();
+                if(sos!=null) sos.close();
+            }
+        }else{
+            System.out.println("미존재");
+        }
+    }
+
 }

@@ -46,12 +46,7 @@ dependencies {
     compile 'org.webjars:jquery-ui:1.11.4'
     compile 'org.webjars:bootstrap:3.3.6'
 
-    compile("org.apache.tiles:tiles-jsp:3.0.8")
-    implementation 'org.apache.tiles:tiles-jsp:3.0.5'
-    implementation 'org.apache.tiles:tiles-servlet:3.0.5'
-    implementation 'org.apache.tiles:tiles-core:3.0.5'
-    implementation 'org.apache.tiles:tiles-api:3.0.5'
-    implementation 'org.apache.tiles:tiles-el:3.0.5'
+    compile("org.springframework.boot:spring-boot-devtools")
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }

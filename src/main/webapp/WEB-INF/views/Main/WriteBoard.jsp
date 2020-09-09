@@ -1,5 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <%@ include file="/WEB-INF/views/template/header.jsp" %>
 
@@ -8,9 +8,10 @@
 
 <script>
 	$(document).ready(function(){
-		var msg = '${msg}';
-		if( msg != null && msg != '' ){
-			alert(msg);
+		var msgSuccess = '${msgSuccess}';
+		if( msgSuccess != null && msgSuccess != '' ){
+			alert(msgSuccess);
+			location.href="/Main/home.do";
 		}
 	});
 </script>

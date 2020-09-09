@@ -1,5 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 
 <%@ include file="/WEB-INF/views/template/header.jsp" %>
 
@@ -12,61 +15,68 @@
 		<section class="ftco-section ftco-no-pt ftco-no-pb">
 			<div class="container px-md-0">
 				<div class="row d-flex no-gutters">
-					<div class="col-md-12 portfolio-wrap">
-						<div class="row no-gutters align-items-center">
-							<a href="images/work-1.jpg" class="col-md-6 img image-popup js-halfheight d-flex align-items-center justify-content-center" style="background-image: url(/resources/images/2020-05-05/1.jpg);">
-								<div class="icon d-flex align-items-center justify-content-center">
-									<span class="fa fa-expand"></span>
-								</div>
-							</a>
-							<div class="col-md-6">
-								<div class="text pt-5 pl-0 px-lg-5 pl-md-4 ftco-animate">
-									<div class="px-4 px-lg-4">
-										<div class="desc">
-											<div class="top">
-												<span class="subheading">2020-05-05</span>
-												<h2 class="mb-4"><a href="gallery.html">전주 한옥마을</a></h2>
-											</div>
-											<div class="absolute">
-												<p>전주 한옥마을 꾸르꾸르 꾸울재앰~</p>
-											</div>
-											<p><a href="single.html" class="custom-btn">사진 더보기</a></p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-
 
 					<c:forEach var="item" items="${resultList}" varStatus="status">
-
-						<div class="col-md-12 portfolio-wrap">
-							<div class="row no-gutters align-items-center">
-								<a href="images/work-2.jpg" class="col-md-6 order-md-last img image-popup js-fullheight d-flex align-items-center justify-content-center" style="background-image: url(/resources/images/${item.thumbNailLocation});">
-									<div class="icon d-flex align-items-center justify-content-center">
-										<span class="fa fa-expand"></span>
-									</div>
-								</a>
-								<div class="col-md-6">
-									<div class="text pt-5 px-md-5 ftco-animate">
-										<div class="px-4 px-lg-4">
-											<div class="desc text-md-right">
-												<div class="top">
-													<span class="subheading"><c:out value="${item.showDate}" /></span>
-													<h2 class="mb-4"><a href="gallery.html"><c:out value="${item.showTitle}" /></a></h2>
+						<!-- 홀수번째 왼쪽 얼라인 -->
+						<c:if test="${status.count % 2 == 1}">
+							<div class="col-md-12 portfolio-wrap">
+								<div class="row no-gutters align-items-center">
+									<a href="images/work-3.jpg" class="col-md-6 img image-popup js-fullheight d-flex align-items-center justify-content-center"style="background-image: url( /Main/downFile.do?img=<c:out value="${item.thumbNailLocation}" />  );">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="fa fa-expand"></span>
+										</div>
+									</a>
+									<div class="col-md-6">
+										<div class="text pt-5 pl-0 px-lg-5 pl-md-4 ftco-animate">
+											<div class="px-4 px-lg-4">
+												<div class="desc">
+													<div class="top">
+														<span class="subheading"><c:out value="${item.showDate}" /> &nbsp; <c:out value="${item.showPlace}" />에서 </span>
+														<h2 class="mb-4"><a href="gallery.html"><c:out value="${item.showTitle}" /></a></h2>
+													</div>
+													<div class="absolute">
+														<p><c:out value="${item.showContent}" /></p>
+													</div>
+													<p><a href="single.html" class="custom-btn">View More</a></p>
 												</div>
-												<div class="absolute">
-													<p><c:out value="${item.showContent}" /></p>
-												</div>
-												<p><a href="single.html" class="custom-btn">사진 더보기</a></p>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</c:if>
+
+						<!-- 짝수번째 오른쪽 얼라인 -->
+						<c:if test="${status.count % 2 == 0}">
+							<div class="col-md-12 portfolio-wrap">
+								<div class="row no-gutters align-items-center">
+									<a href="images/work-2.jpg" class="col-md-6 order-md-last img image-popup js-fullheight d-flex align-items-center justify-content-center" style="background-image: url( /Main/downFile.do?img=<c:out value="${item.thumbNailLocation}" />  );">
+										<div class="icon d-flex align-items-center justify-content-center">
+											<span class="fa fa-expand"></span>
+										</div>
+									</a>
+									<div class="col-md-6">
+										<div class="text pt-5 px-md-5 ftco-animate">
+											<div class="px-4 px-lg-4">
+												<div class="desc text-md-right">
+													<div class="top">
+														<span class="subheading"><c:out value="${item.showDate}" /> &nbsp; <c:out value="${item.showPlace}" />에서 </span>
+														<h2 class="mb-4"><a href="gallery.html"><c:out value="${item.showTitle}" /></a></h2>
+													</div>
+													<div class="absolute">
+														<p><c:out value="${item.showContent}" /></p>
+													</div>
+													<p><a href="single.html" class="custom-btn">View More</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:if>
+
+
+
 					</c:forEach>
 
 
@@ -305,3 +315,6 @@
 
 
 <%@ include file="/WEB-INF/views/template/footer.jsp" %>
+
+
+<!-- <img src="/Main/downFile.do?img=<c:out value="abc" /> " width="100" height="100" /> -->
